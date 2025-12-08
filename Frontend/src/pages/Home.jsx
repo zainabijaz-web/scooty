@@ -4,176 +4,208 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div className="w-full overflow-x-hidden">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#111827] to-[#1E3A8A] text-white">
-
+      <section
+        className="
+    relative 
+    min-h-[85vh] sm:min-h-[90vh] md:min-h-screen 
+    flex items-center justify-center 
+    overflow-hidden 
+    bg-gradient-to-b from-[#111827] to-[#1E3A8A] 
+    text-white
+  "
+      >
         {/* Big Background Text */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <h1 className="text-[10rem] lg:text-[15rem] font-black font-sans select-none opacity-20 text-center w-full whitespace-nowrap absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <h1
+            className="
+        text-[4.5rem] sm:text-[6rem] md:text-[9rem] lg:text-[15rem]
+        font-black opacity-20 
+        text-center w-full 
+        absolute top-[22%] sm:top-[30%] left-1/2 
+        -translate-x-1/2 -translate-y-1/2
+      "
+          >
             SCOOTY
           </h1>
         </div>
 
-        {/* Scooty Image Center */}
-        <div className="absolute z-10 top-10 left-1/2 -translate-x-1/2 w-full flex justify-center">
+        {/* Scooty Image */}
+        <div className="absolute z-10 top-8 sm:top-4 md:top-4 left-1/2 -translate-x-1/2 w-full flex justify-center">
           <img
             src="/images/herosection.png"
-            className="w-[70%] max-w-xl drop-shadow-2xl"
-            alt="Scooty"/>
+            className="
+        w-[85%] 
+        sm:w-[70%] md:w-[58%] drop-shadow-2xl"
+            alt="Scooty"
+          />
         </div>
 
-        {/* Bottom Content Text */}
-        <div className="absolute bottom-20 left-4 right-4 flex justify-between items-end z-20">
-          {/* Left Side - Button */}
-          <div className="text-left ml-10">
-            <Link
-              to="/models"
-              className="inline-flex items-center gap-2 px-8 py-4 text-lg rounded-full bg-white text-[#111827] font-bold hover:bg-gray-100 transition-all shadow-2xl hover:shadow-2xl transform hover:-translate-y-1 hover:scale-105 duration-300">
-              🛵 SHOP NOW
-            </Link>
-          </div>
+        {/* Bottom Section */}
+        <div
+          className="
+    absolute 
+    bottom-1 sm:bottom-8 md:bottom-5 
+    left-4 right-4
+    flex flex-col md:flex-row 
+    justify-between 
+    items-center      /* SAME alignment for tablet & laptop */
+    gap-3 sm:gap-5 
+    z-20
+  "
+        >
+          {/* Button */}
+         <Link
+  to="/models"
+  className="
+    inline-flex items-center gap-2
+    px-4 sm:px-6 md:px-4 lg:px-8 xl:px-10
+    py-2 sm:py-3 md:py-2 lg:py-3 xl:py-4
+    text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl
 
-          {/* Right Side - Stats */}
-          <div className="text-right text-white mr-10">
-            <div className="bg-black/50 backdrop-blur-md rounded-2xl p-5 border border-white/30 shadow-2xl">
-              <div className="text-3xl font-bold text-white">RS 155,000</div>
-              <div className="text-white/80 text-base mt-1">Starting Price</div>
-              <div className="flex items-center justify-end gap-2 mt-3">
-                <div className="flex items-center gap-1">
-                  <span className="text-yellow-400 text-lg">⭐</span>
-                  <span className="text-white font-semibold">4.8/5</span>
-                </div>
-                <span className="text-white/70 text-sm">(2K+ Reviews)</span>
-              </div>
-            </div>
-          </div>
+    rounded-full bg-white text-[#111827] font-bold
+    hover:bg-gray-100 shadow-xl hover:shadow-2xl
+    transform hover:-translate-y-1 duration-300
+  "
+>
+  🛵 SHOP NOW
+</Link>
+
+
+          {/* Stats Box */}
+         <div
+  className="
+    bg-black/50 backdrop-blur-md rounded-xl
+    p-2 sm:p-3 md:p-2 lg:p-4 xl:p-6
+    border border-white/30 shadow-2xl
+    text-center md:text-right
+    
+    w-[140px]
+    sm:w-[180px]
+    md:w-[200px]
+    lg:w-[240px]
+    xl:w-[280px]
+  "
+>
+  <div className="text-md sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl font-bold">
+    RS 155,000
+  </div>
+
+  <div className="text-white/80 text-[9px] sm:text-sm md:text-base lg:text-lg xl:text-xl mt-1">
+    Starting Price
+  </div>
+
+  <div className="flex justify-center md:justify-end items-center gap-1 sm:gap-2 mt-1 md:mt-3">
+    <span className="text-yellow-400 text-sm sm:text-lg lg:text-xl xl:text-2xl">⭐</span>
+    <span className="font-semibold text-xs sm:text-base lg:text-lg xl:text-xl">4.8/5</span>
+    <span className="text-white/70 text-[9px] sm:text-sm lg:text-base xl:text-lg">(2K+ Reviews)</span>
+  </div>
+</div>
+
         </div>
-
       </section>
-
       {/* Warranty Section */}
-      <section className="py-16 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
+      <section className="py-10 sm:py-16 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-800">
               Our <span className="text-blue-600">Premium</span> Benefits
             </h2>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Experience peace of mind with our comprehensive warranty and service packages
+            <p className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto mt-2">
+              Experience peace of mind with our comprehensive warranty & service
+              packages.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                icon: '🛡️',
-                title: '2 Years Warranty',
-                desc: 'Complete vehicle protection',
-                bgColor: 'bg-blue-500',
-                delay: '100'
+                icon: "🛡️",
+                title: "2 Years Warranty",
+                desc: "Complete vehicle protection",
+                bgColor: "bg-blue-500",
               },
               {
-                icon: '🔧',
-                title: 'Free Service',
-                desc: 'First 3 services complimentary',
-                bgColor: 'bg-green-500',
-                delay: '200'
+                icon: "🔧",
+                title: "Free Service",
+                desc: "First 3 services complimentary",
+                bgColor: "bg-green-500",
               },
               {
-                icon: '⚡',
-                title: 'Battery Backup',
-                desc: '5 years battery warranty',
-                bgColor: 'bg-orange-500',
-                delay: '300'
+                icon: "⚡",
+                title: "Battery Backup",
+                desc: "5 years battery warranty",
+                bgColor: "bg-orange-500",
               },
               {
-                icon: '🚚',
-                title: 'Roadside Assist',
-                desc: '24/7 emergency support',
-                bgColor: 'bg-purple-500',
-                delay: '400'
-              }
+                icon: "🚚",
+                title: "Roadside Assist",
+                desc: "24/7 emergency support",
+                bgColor: "bg-purple-500",
+              },
             ].map((item) => (
               <div
                 key={item.title}
                 className="group relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 overflow-hidden"
               >
-                {/* Animated Background */}
-                <div className={`absolute inset-0 ${item.bgColor} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-
-                {/* Animated Icon Container */}
-                <div className="relative z-10">
-                  <div className={`w-16 h-16 ${item.bgColor} rounded-2xl flex items-center justify-center text-2xl mb-4 mx-auto transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg`}>
-                    {item.icon}
-                  </div>
-
-                  <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-700 transition-colors duration-300">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-                    {item.desc}
-                  </p>
+                <div
+                  className={`w-16 h-16 ${item.bgColor} rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4`}
+                >
+                  {item.icon}
                 </div>
-
-                {/* Hover Effect Line */}
-                <div className={`absolute bottom-0 left-0 w-0 h-1 ${item.bgColor} group-hover:w-full transition-all duration-500`}></div>
+                <h3 className="text-xl font-bold text-gray-800 text-center">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 text-center mt-2">{item.desc}</p>
               </div>
             ))}
-          </div>
-
-          {/* Additional Info */}
-          <div className="text-center mt-12">
-            <div className="inline-flex items-center gap-2 bg-blue-50 px-6 py-3 rounded-full border border-blue-200">
-              <span className="text-blue-600">📞</span>
-              <p className="text-gray-700">
-                Need help? <span className="text-blue-600 font-semibold">Call us at +91-XXXXX-XXXXX</span>
-              </p>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* About Company Section */}
-<section >
-  <div className="w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-0 min-h-[500px]">
-    
-    {/* Left Side - Image */}
-    <div className="bg-white flex items-center justify-center p-8">
-      <img
-        src="/images/about-scooty.png"
-        alt="About Scooty Company"
-        className="h-full max-h-[500px] w-full object-cover rounded-2xl"
-      />
-    </div>
+      {/* About Section */}
+      <section>
+        <div className="w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-0 min-h-[450px]">
+          {/* Image */}
+          <div className="bg-white flex items-center justify-center p-5 sm:p-8">
+            <img
+              src="/images/about-scooty.png"
+              alt="About Scooty"
+              className="w-full max-w-lg object-cover rounded-2xl"
+            />
+          </div>
 
-    {/* Right Side - Content with Hero Gradient */}
-    <div className="bg-gradient-to-b from-[#111827] to-[#1E3A8A] text-white p-12 flex flex-col justify-center">
-      <div className="w-10 h-1 bg-white mb-4"></div>
-
-      <h2 className="text-5xl font-extrabold text-white leading-tight mb-6">
-        ABOUT <br />
-        OUR <br />
-        COMPANY
-      </h2>
-
-      <p className="text-gray-300 text-lg mb-8 max-w-md">
-        We provide the best electric scooty experience with affordable pricing,
-        comfortable rides, and high-tech features for every modern rider.
-      </p>
-    </div>
-  </div>
-</section>
-
-      {/* Best Customer Experience Section */}
-      <section className="py-5 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mt-3">We Ensure the Best Riding Experience</h2>
-          <p className="text-gray-600 mt-3">Premium comfort, safety, and smart technology for every ride.</p>
+          {/* Content */}
+          <div className="bg-gradient-to-b from-[#111827] to-[#1E3A8A] text-white p-8 sm:p-12 flex flex-col justify-center">
+            <div className="w-12 h-1 bg-white mb-4"></div>
+            <h2 className="text-3xl sm:text-5xl font-extrabold leading-tight mb-6">
+              ABOUT <br /> OUR <br /> COMPANY
+            </h2>
+            <p className="text-gray-300 text-base sm:text-lg max-w-md">
+              We provide the best electric scooty experience with affordable
+              pricing and high-tech features.
+            </p>
+          </div>
         </div>
+      </section>
 
-        <div className="max-w-2xl mx-auto relative">
-          <img src="/images/Scootydetails.png" className="w-full mx-auto drop-shadow-lg" alt="Scooty Details" />
+      {/* Experience Section */}
+      <section className="py-10 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
+        <div className="max-w-6xl mx-auto text-center px-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
+            We Ensure the Best Riding Experience
+          </h2>
+          <p className="text-gray-600 mt-2">
+            Premium comfort, safety & smart technology.
+          </p>
+
+          <div className="max-w-xl mx-auto mt-6">
+            <img
+              src="/images/Scootydetails.png"
+              className="w-full drop-shadow-lg"
+              alt="Scooty Details"
+            />
+          </div>
         </div>
       </section>
     </div>
