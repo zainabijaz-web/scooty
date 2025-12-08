@@ -61,10 +61,6 @@ const Home = () => {
       px-4 sm:px-6 md:px-4 lg:px-6 xl:px-8
       py-2 sm:py-3 md:py-2 lg:py-3 xl:py-4
       text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl
-
-      mt-0                /* 🌟 Mobile only: slightly lower */
-      sm:mt-0             /* Tablet/Desktop same as before */
-
       rounded-full bg-white text-[#111827] font-bold
       hover:bg-gray-100 shadow-xl hover:shadow-2xl
       transform hover:-translate-y-1 duration-300
@@ -79,7 +75,7 @@ const Home = () => {
       bg-black/50 backdrop-blur-md rounded-xl
       p-2 sm:p-3 md:p-2 lg:p-4 xl:p-5
       border border-white/30 shadow-2xl
-      text-center md:text-right
+      text-center md:text-center
       
       w-[140px]      /* Mobile small */
       sm:w-[180px]   /* Tablet */
@@ -108,6 +104,7 @@ const Home = () => {
               </span>
             </div>
           </div>
+          
         </div>
       </section>
 

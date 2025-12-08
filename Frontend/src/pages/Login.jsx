@@ -21,14 +21,14 @@ const Login = () => {
 
   // ✅ Redirect based on role
   useEffect(() => {
-    if (user) {
-      if (user.user.role === "admin") {
-        navigate("/admin", { replace: true });
-      } else {
-        navigate(from, { replace: true });
-      }
+  if (user) {
+    if (user.user.role === "admin") {
+      navigate("/admin", { replace: true });
+    } else {
+      navigate(from, { replace: true });
     }
-  }, [user]);
+  }
+}, [user, from, navigate]);
 
   return (
     <div className="min-h-screen flex items-center justify-start bg-gray-100 p-4 bg-cover bg-center bg-no-repeat" 

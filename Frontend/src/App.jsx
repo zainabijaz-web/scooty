@@ -18,7 +18,7 @@ import AdminApp from "./admin/AdminApp";
 
 // Stripe
 import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+import { loadStripe } from "@stripe/stripe-js"
 import PaymentPage from "./pages/PaymentPage"; //Stripe payment page
 
 const stripePromise = loadStripe("pk_test_1234567890"); //publishable key

@@ -22,7 +22,7 @@ const Register = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-start bg-gray-100 p-4 bg-cover bg-center bg-no-repeat" 
-         style={{backgroundImage: "url('/images/backgroundimage.jpeg')"}}>
+         style={{backgroundImage: "url('/images/backgroundImage.jpeg')"}}>
       
       <form onSubmit={submit} className="bg-white/70 backdrop-blur-md p-8 rounded-xl shadow-lg w-full max-w-md ml-8 border border-white/30 mt-16">
         <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">Create Account</h2>
