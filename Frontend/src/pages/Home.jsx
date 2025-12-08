@@ -44,65 +44,73 @@ const Home = () => {
         <div
           className="
     absolute 
-    bottom-1 sm:bottom-8 md:bottom-5 
+    bottom-1 sm:bottom-8 md:bottom-5 lg:bottom-6 xl:bottom-8
     left-4 right-4
     flex flex-col md:flex-row 
     justify-between 
-    items-center      /* SAME alignment for tablet & laptop */
+    items-center
     gap-3 sm:gap-5 
     z-20
   "
         >
           {/* Button */}
-         <Link
-  to="/models"
-  className="
-    inline-flex items-center gap-2
-    px-4 sm:px-6 md:px-4 lg:px-8 xl:px-10
-    py-2 sm:py-3 md:py-2 lg:py-3 xl:py-4
-    text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl
+          <Link
+            to="/models"
+            className="
+      inline-flex items-center gap-2
+      px-4 sm:px-6 md:px-4 lg:px-6 xl:px-8
+      py-2 sm:py-3 md:py-2 lg:py-3 xl:py-4
+      text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl
 
-    rounded-full bg-white text-[#111827] font-bold
-    hover:bg-gray-100 shadow-xl hover:shadow-2xl
-    transform hover:-translate-y-1 duration-300
-  "
->
-  🛵 SHOP NOW
-</Link>
+      mt-0                /* 🌟 Mobile only: slightly lower */
+      sm:mt-0             /* Tablet/Desktop same as before */
 
+      rounded-full bg-white text-[#111827] font-bold
+      hover:bg-gray-100 shadow-xl hover:shadow-2xl
+      transform hover:-translate-y-1 duration-300
+    "
+          >
+            🛵 SHOP NOW
+          </Link>
 
           {/* Stats Box */}
-         <div
-  className="
-    bg-black/50 backdrop-blur-md rounded-xl
-    p-2 sm:p-3 md:p-2 lg:p-4 xl:p-6
-    border border-white/30 shadow-2xl
-    text-center md:text-right
-    
-    w-[140px]
-    sm:w-[180px]
-    md:w-[200px]
-    lg:w-[240px]
-    xl:w-[280px]
-  "
->
-  <div className="text-md sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl font-bold">
-    RS 155,000
-  </div>
+          <div
+            className="
+      bg-black/50 backdrop-blur-md rounded-xl
+      p-2 sm:p-3 md:p-2 lg:p-4 xl:p-5
+      border border-white/30 shadow-2xl
+      text-center md:text-right
+      
+      w-[140px]      /* Mobile small */
+      sm:w-[180px]   /* Tablet */
+      md:w-auto      /* Desktop */
+      lg:w-[220px]   /* Laptop */
+      xl:w-[250px]   /* Large Laptop */
+    "
+          >
+            <div className="text-md sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl font-bold">
+              RS 155,000
+            </div>
 
-  <div className="text-white/80 text-[9px] sm:text-sm md:text-base lg:text-lg xl:text-xl mt-1">
-    Starting Price
-  </div>
+            <div className="text-white/80 text-[9px] sm:text-sm md:text-base lg:text-lg xl:text-xl mt-1">
+              Starting Price
+            </div>
 
-  <div className="flex justify-center md:justify-end items-center gap-1 sm:gap-2 mt-1 md:mt-3">
-    <span className="text-yellow-400 text-sm sm:text-lg lg:text-xl xl:text-2xl">⭐</span>
-    <span className="font-semibold text-xs sm:text-base lg:text-lg xl:text-xl">4.8/5</span>
-    <span className="text-white/70 text-[9px] sm:text-sm lg:text-base xl:text-lg">(2K+ Reviews)</span>
-  </div>
-</div>
-
+            <div className="flex justify-center md:justify-end items-center gap-1 sm:gap-2 mt-1 md:mt-3">
+              <span className="text-yellow-400 text-sm sm:text-lg lg:text-xl xl:text-xl">
+                ⭐
+              </span>
+              <span className="font-semibold text-xs sm:text-base lg:text-lg xl:text-lg">
+                4.8/5
+              </span>
+              <span className="text-white/70 text-[9px] sm:text-sm lg:text-base xl:text-base">
+                (2K+ Reviews)
+              </span>
+            </div>
+          </div>
         </div>
       </section>
+
       {/* Warranty Section */}
       <section className="py-10 sm:py-16 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
         <div className="max-w-6xl mx-auto px-4">
