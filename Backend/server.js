@@ -4,6 +4,9 @@ import mongoose from "mongoose";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
+import orderRoutes from "./routes/orderRoutes.js";
+import modelRoutes from "./routes/modelRoutes.js";
+import adminUserRoutes from "./routes/adminUserRoutes.js";
 import { stripeWebhooks } from "./controllers/paymentController.js";
 
 dotenv.config();
@@ -16,19 +19,22 @@ app.use(
   })
 );
 
-// 1️⃣ MUST COME BEFORE express.json()
+// Stripe webhook must come before JSON parser
 app.post(
   "/api/payment/webhook",
   express.raw({ type: "application/json" }),
   stripeWebhooks
 );
 
-// 2️⃣ Now apply JSON parser
+// JSON parser
 app.use(express.json());
 
 // Routes
 app.use("/api/auth", userRoutes);
 app.use("/api/payment", paymentRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/models", modelRoutes);
+app.use("/api/admin/users", adminUserRoutes);
 
 // MongoDB
 mongoose

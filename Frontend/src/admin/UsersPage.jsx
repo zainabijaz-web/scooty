@@ -2,73 +2,74 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function UsersPage() {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   // ------------------------------
-  //  STATES
+  // FETCH USERS
   // ------------------------------
-  const [users, setUsers] = useState([]);       // Backend se users store honge
-  const [loading, setLoading] = useState(true); // Page load hone tak loading true
-  const [error, setError] = useState(null);     // Error message store hogi
+  const fetchUsers = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/api/admin/users");
+      if (Array.isArray(res.data)) setUsers(res.data);
+      else throw new Error("Invalid response format");
+    } catch (err) {
+      console.error(err); // Debug info
+      setError("Failed to fetch users.");
+      setUsers([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-
-  // ------------------------------
-  //  BACKEND SE USERS FETCH KARNA
-  // ------------------------------
   useEffect(() => {
-    axios.get("/api/users") // Backend API call
-      .then(res => {
-        
-        // Agar backend se array aaye to users set karo
-        if (Array.isArray(res.data)) {
-          setUsers(res.data);
-        } else {
-          // Agar response wrong format ho tu error throw karo
-          throw new Error("Invalid response format");
-        }
-
-      })
-      .catch(() => {
-        // Agar API na chale tu ye message show hoga
-        setError("Failed to fetch users.");
-        setUsers([]); // Dummy users add NHI kar rahe
-      })
-      .finally(() => setLoading(false)); // Loading false
+    fetchUsers();
   }, []);
 
+  // ------------------------------
+  // VIEW USER
+  // ------------------------------
+  const handleView = (user) => {
+    // Alert ke sath console log bhi
+    console.log("View clicked:", user);
+    alert(`Name: ${user.name}\nEmail: ${user.email}\nRole: ${user.role}`);
+  };
 
   // ------------------------------
-  //  LOADING SCREEN
+  // DELETE USER
   // ------------------------------
-  if (loading) {
-    return <div className="p-6 text-xl font-semibold">Loading...</div>;
-  }
+  const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this user?")) return;
 
+    try {
+      const res = await axios.delete(`http://localhost:5000/api/admin/users/${id}`);
+      console.log(res.data); // Debug info
+      setUsers((prev) => prev.filter((u) => u._id !== id));
+    } catch (err) {
+      console.error(err); // Debug info
+      alert("Failed to delete user. Check backend route or CORS.");
+    }
+  };
 
   // ------------------------------
-  //  UI STARTS HERE
+  // LOADING SCREEN
   // ------------------------------
+  if (loading) return <div className="p-6 text-xl font-semibold">Loading...</div>;
+
   return (
     <div className="flex">
-
-      {/* FULL PAGE CONTENT */}
       <div className="flex-1 min-h-screen p-6">
-
-        {/* PAGE TITLE */}
         <h1 className="text-2xl font-bold mb-4">Users</h1>
 
-        {/* ERROR MESSAGE BOX */}
         {error && (
           <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
             {error}
           </div>
         )}
 
-        {/* USERS TABLE */}
         <div className="bg-white rounded-2xl shadow overflow-auto">
-
           <table className="min-w-full divide-y">
-
-            {/* TABLE HEADERS */}
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-6 py-3 text-left">Name</th>
@@ -78,10 +79,7 @@ export default function UsersPage() {
               </tr>
             </thead>
 
-            {/* TABLE BODY */}
             <tbody>
-
-              {/* AGAR KOI USER NA HO */}
               {users.length === 0 ? (
                 <tr>
                   <td colSpan="4" className="text-center py-6 text-gray-500">
@@ -89,28 +87,30 @@ export default function UsersPage() {
                   </td>
                 </tr>
               ) : (
-
-                // USERS KO LOOP ME SHOW KARNA
-                users.map(u => (
-                  <tr key={u?._id} className="border-b">
-
-                    <td className="px-6 py-4">{u?.name}</td>
-                    <td className="px-6 py-4">{u?.email}</td>
-                    <td className="px-6 py-4">{u?.role}</td>
-
-                    {/* ACTION BUTTONS */}
+                users.map((u) => (
+                  <tr key={u._id} className="border-b">
+                    <td className="px-6 py-4">{u.name}</td>
+                    <td className="px-6 py-4">{u.email}</td>
+                    <td className="px-6 py-4">{u.role}</td>
                     <td className="px-6 py-4">
-                      <button className="text-blue-600 mr-3">View</button>
-                      <button className="text-red-600">Delete</button>
+                      <button
+                        className="text-blue-600 mr-3"
+                        onClick={() => handleView(u)}
+                      >
+                        View
+                      </button>
+                      <button
+                        className="text-red-600"
+                        onClick={() => handleDelete(u._id)}
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 ))
               )}
-
             </tbody>
-
           </table>
-
         </div>
       </div>
     </div>
