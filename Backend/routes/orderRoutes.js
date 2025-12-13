@@ -1,24 +1,27 @@
 import express from "express";
-import { createOrder, getUserOrders } from "../controllers/orderController.js";
+import {
+  createOrder,
+  createStripeOrder,
+  getAllOrders,
+  confirmOrder,
+  getRevenue,
+} from "../controllers/orderController.js";
 
 const router = express.Router();
 
-// Create new order
-router.post("/", async (req, res) => {
-  try {
-    await createOrder(req, res);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
+// Create new COD order
+router.post("/", createOrder);
 
-// Get all orders of a user
-router.get("/:userId", async (req, res) => {
-  try {
-    await getUserOrders(req, res);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
+// Create new Stripe order
+router.post("/stripe", createStripeOrder);
+
+// Get all orders (admin)
+router.get("/", getAllOrders);
+
+// Confirm an order (admin)
+router.patch("/:orderId/confirm", confirmOrder);
+
+// Get revenue (admin)
+router.get("/revenue", getRevenue);
 
 export default router;

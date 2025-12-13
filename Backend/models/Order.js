@@ -5,16 +5,15 @@ const orderSchema = new mongoose.Schema(
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
     items: [
       {
-        id: { type: String, required: true }, // product/model ID
+        productId: { type: mongoose.Schema.Types.ObjectId, ref: "Model", required: true },
         name: String,
-        qty: Number,
         price: Number,
+        qty: Number,
       },
     ],
     amount: { type: Number, required: true }, // total amount
-    paymentMethod: { type: String, enum: ["card", "cod"], default: "card" },
-    status: { type: String, enum: ["pending", "paid", "cod", "failed"], default: "pending" },
-    paymentIntentId: { type: String }, // Stripe PaymentIntent ID for card payments
+    paymentStatus: { type: String, enum: ["pending", "paid"], default: "pending" },
+    paymentIntentId: { type: String }, // store Stripe paymentIntent id
   },
   { timestamps: true }
 );

@@ -6,6 +6,19 @@ import axios from "axios";
 
 const BASE_URL = "http://localhost:5000"; // Backend URL
 
+// Toast component
+function Toast({ message, show }) {
+  return (
+    <div
+      className={`fixed bottom-5 right-5 bg-green-500 text-white px-4 py-2 rounded shadow-lg transition-all duration-300 ${
+        show ? "opacity-100" : "opacity-0"
+      }`}
+    >
+      {message}
+    </div>
+  );
+}
+
 export default function ScootyDetails() {
   const { id } = useParams(); // backend _id
   const dispatch = useDispatch();
@@ -14,6 +27,7 @@ export default function ScootyDetails() {
 
   const [scooty, setScooty] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
     axios
@@ -49,7 +63,10 @@ export default function ScootyDetails() {
         qty: 1,
       })
     );
-    alert("Added to Cart!");
+
+    // Show toast notification
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 2000); // disappears after 2s
   };
 
   if (loading)
@@ -78,9 +95,7 @@ export default function ScootyDetails() {
         {/* Right Side - Details */}
         <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
           <h1 className="text-4xl font-bold text-white mb-4">{scooty.name}</h1>
-          <p className="text-2xl text-blue-300 font-bold mb-6">
-            {scooty.price}
-          </p>
+          <p className="text-2xl text-blue-300 font-bold mb-6">{scooty.price}</p>
 
           <p className="text-gray-300 text-lg mb-6 leading-relaxed">
             {scooty.description || "No description available."}
@@ -115,6 +130,9 @@ export default function ScootyDetails() {
           </div>
         </div>
       </div>
+
+      {/* Toast notification */}
+      <Toast message="Added to Cart!" show={showToast} />
     </div>
   );
 }
